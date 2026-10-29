@@ -7,7 +7,7 @@ const path = require("path");
 dotenv.config();
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 console.log("ESTE ES EL SERVER.JS QUE ESTOY EJECUTANDO");
 app.use((req, res, next) => {
   console.log("Petición recibida:", req.method, req.url);
