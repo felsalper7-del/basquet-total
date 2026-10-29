@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clasificación NBA | BASQUET TOTAL</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="encabezado">
+    <a href="index.html" class="logo-basquet">🏀 BASQUET TOTAL</a>
+    <p>TODO SOBRE BASQUET</p>
+
+    <nav class="navegacion">
+      <a href="index.html">Inicio</a>
+      <a href="nba.html">Resultados</a>
+      <a href="clasificacion.html">Clasificación</a>
+      <a href="jugadores.html">Jugadores</a>
+    </nav>
+  </header>
+
+  <main class="pagina-clasificacion">
+    <section class="titulo-clasificacion">
+      <p class="etiqueta-basquet">NBA · TEMPORADA 2026-27</p>
+      <h1>CLASIFICACIÓN <span>NBA</span></h1>
+      <p>Seguí la lucha por los playoffs, conferencia por conferencia.</p>
+      <button id="actualizar-tabla">Actualizar clasificación</button>
+      <p id="estado-tabla">Cargando clasificación...</p>
+    </section>
+
+    <section id="tablas-conferencias" class="tablas-conferencias"></section>
+  </main>
+
+  <footer class="pie-basquet">
+    <p>© BASQUET TOTAL · TODO SOBRE BASQUET 🏀</p>
+  </footer>
+
+  <script>
+    const contenedor = document.getElementById("tablas-conferencias");
+    const estado = document.getElementById("estado-tabla");
+    const boton = document.getElementById("actualizar-tabla");
+
+    async function cargarClasificacion() {
+      estado.textContent = "Cargando clasificación...";
+      boton.disabled = true;
+
+      try {
+        const respuesta = await fetch("/api/nba-standings");
+        const datos = await respuesta.json();
+
+        if (!respuesta.ok || !Array.isArray(datos.conferencias)) {
+          throw new Error(datos.error || "No se pudo cargar la clasificación.");
+        }
+
+        contenedor.innerHTML = "";
+
+        datos.conferencias.forEach(conferencia => {
+          const seccion = document.createElement("section");
+          seccion.className = "conferencia-basquet";
+
+          const titulo = document.createElement("h2");
+          titulo.textContent = conferencia.nombre;
+          seccion.appendChild(titulo);
+
+          const envoltorio = document.createElement("div");
+          envoltorio.className = "tabla-scroll";
+
+          const tabla = document.createElement("table");
+          tabla.className = "tabla-nba";
+
+          tabla.innerHTML = `
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Equipo</th>
+                <th>J</th>
+                <th>G</th>
+                <th>P</th>
+                <th>%</th>
+                <th>Dif.</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          `;
+
+          const cuerpo = tabla.querySelector("tbody");
+
+          (conferencia.equipos || []).forEach(equipo => {
+            const fila = document.createElement("tr");
+
+            const porcentaje = Number(equipo.porcentaje);
+            const porcentajeTexto = Number.isFinite(porcentaje)
+              ? (porcentaje * 100).toFixed(1) + "%"
+              : "—";
+
+            fila.innerHTML = `
+              <td>${equipo.posicion ?? "—"}</td>
+              <td>
+                <div class="equipo-clasificacion">
+                  ${equipo.logo ? `<img src="${equipo.logo}" alt="" loading="lazy">` : ""}
+                  <span>${equipo.nombre ?? "Equipo"}</span>
+                  <small>${equipo.abreviatura ?? ""}</small>
+                </div>
+              </td>
+              <td>${equipo.jugados ?? 0}</td>
+              <td class="victorias">${equipo.victorias ?? 0}</td>
+              <td>${equipo.derrotas ?? 0}</td>
+              <td>${porcentajeTexto}</td>
+              <td>${equipo.diferencia ?? 0}</td>
+            `;
+
+            cuerpo.appendChild(fila);
+          });
+
+          envoltorio.appendChild(tabla);
+          seccion.appendChild(envoltorio);
+          contenedor.appendChild(seccion);
+        });
+
+        estado.textContent = "Temporada " + (datos.temporada || "NBA") +
+          (datos.actualizado ? " · Datos actualizados" : "");
+
+      } catch (error) {
+        console.error(error);
+        estado.textContent = "No se pudo cargar la clasificación. Revisá que el servidor esté encendido.";
+      } finally {
+        boton.disabled = false;
+      }
+    }
+
+    boton.addEventListener("click", cargarClasificacion);
+    cargarClasificacion();
+  </script>
+
+</body>
+</html>

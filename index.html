@@ -1,0 +1,324 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Felipe Basket | Mi camino en el básquet</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0b0b0b;
+      color: #f5f5f5;
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 22px 20px;
+      text-align: center;
+      background: #111;
+      border-bottom: 2px solid #f97316;
+    }
+
+    header h1 {
+      margin: 0;
+      color: #f97316;
+      letter-spacing: 3px;
+    }
+
+    header p {
+      margin: 5px 0 0;
+      color: #bbb;
+    }
+
+    main {
+      width: min(1100px, 92%);
+      margin: 35px auto;
+    }
+
+    .portada {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 30px;
+      align-items: center;
+      padding: 35px;
+      background: #151515;
+      border: 1px solid #303030;
+      border-radius: 20px;
+    }
+
+    .etiqueta {
+      color: #f97316;
+      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    .portada h2 {
+      margin: 12px 0;
+      font-size: clamp(32px, 5vw, 54px);
+      line-height: 1.1;
+    }
+
+    .portada h2 span {
+      color: #f97316;
+    }
+
+    .portada p {
+      color: #bbb;
+    }
+
+    .boton {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 12px 20px;
+      background: #f97316;
+      color: #111;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .boton:hover {
+      background: #fb923c;
+      transform: translateY(-2px);
+    }
+
+    .foto-portada {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 14px;
+      border: 2px solid #f97316;
+    }
+
+    .titulo-seccion {
+      margin: 40px 0 18px;
+      color: #f97316;
+      font-size: 26px;
+    }
+
+    .tarjeta-jugador {
+      padding: 24px;
+      background: #151515;
+      border: 1px solid #303030;
+      border-radius: 16px;
+    }
+
+    .datos {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin: 20px 0;
+    }
+
+    .dato {
+      padding: 15px;
+      text-align: center;
+      background: #222;
+      border-radius: 10px;
+      border-bottom: 2px solid #f97316;
+    }
+
+    .dato strong {
+      display: block;
+      color: #f97316;
+      font-size: 23px;
+    }
+
+    .dato span {
+      color: #aaa;
+      font-size: 13px;
+    }
+
+    .selector-jugador {
+      margin-top: 20px;
+    }
+
+    .selector-jugador label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    .selector-jugador select {
+      width: 100%;
+      max-width: 350px;
+      padding: 12px;
+      color: white;
+      background: #222;
+      border: 1px solid #444;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+
+    .jugadores {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .tarjeta {
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      background: #151515;
+      border: 1px solid #303030;
+      border-radius: 16px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .tarjeta:hover {
+      transform: translateY(-5px);
+      border-color: #f97316;
+    }
+
+    .tarjeta h3 {
+      margin: 12px 0 4px;
+      color: #f97316;
+    }
+
+    .tarjeta p {
+      color: #bbb;
+      margin-top: 4px;
+    }
+
+    .foto-tarjeta {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 1px solid #333;
+    }
+
+    .tarjeta .boton {
+      align-self: flex-start;
+      margin-top: auto;
+    }
+
+    footer {
+      margin-top: 50px;
+      padding: 25px;
+      text-align: center;
+      color: #999;
+      border-top: 1px solid #333;
+    }
+
+    footer strong {
+      color: #f97316;
+    }
+
+    @media (max-width: 700px) {
+      .portada {
+        grid-template-columns: 1fr;
+        padding: 22px;
+      }
+
+      .foto-portada {
+        max-height: 320px;
+      }
+
+      .jugadores {
+        grid-template-columns: 1fr;
+      }
+
+      .foto-tarjeta {
+        height: 260px;
+      }
+
+      .datos {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>BASQUET TOTAL</h1>
+    <p>TODO SOBRE BASQUET🏀</p>
+  </header>
+
+  <main>
+   
+<section class="portada-basquet">
+ 
+<div class="logo-basquet">
+  <img
+    src="imagenes/logo-basquet.png"
+    alt="Logo oficial de BASQUET TOTAL"
+    class="logo-oficial"
+  >
+  <p>TODO SOBRE BASQUET</p>
+</div>
+
+
+  <div class="menu-basquet">
+
+    <a href="nba.html" class="tarjeta-basquet">
+      <span class="icono-basquet">🏀</span>
+      <h2>RESULTADOS NBA</h2>
+      <p>Últimos partidos y marcadores de la liga.</p>
+      <strong>VER RESULTADOS →</strong>
+    </a>
+
+    <a href="clasificacion.html" class="tarjeta-basquet">
+      <span class="icono-basquet">🏆</span>
+      <h2>CLASIFICACIÓN NBA</h2>
+      <p>Posiciones, victorias y derrotas.</p>
+      <strong>VER CLASIFICACIÓN →</strong>
+    </a>
+
+    <a href="jugadores.html" class="tarjeta-basquet">
+      <span class="icono-basquet">⭐</span>
+      <h2>JUGADORES</h2>
+      <p>Perfiles, estadísticas y estrellas.</p>
+      <strong>VER JUGADORES →</strong>
+    </a>
+
+    <a href="noticias.html" class="tarjeta-basquet">
+      <span class="icono-basquet">📰</span>
+      <h2>NOTICIAS NBA</h2>
+      <p>Las últimas novedades del mundo del básquet.</p>
+      <strong>VER NOTICIAS →</strong>
+    </a>
+
+    <a href="selecciones.html" class="tarjeta-basquet">
+      <span class="icono-basquet">🌎</span>
+      <h2>SELECCIONES</h2>
+      <p>El básquet de cada país.</p>
+      <strong>PRÓXIMAMENTE →</strong>
+    </a>
+
+    <a href="euroliga.html" class="tarjeta-basquet">
+      <span class="icono-basquet">🏆</span>
+      <h2>EUROLIGA</h2>
+      <p>Los mejores equipos del básquet europeo.</p>
+      <strong>PRÓXIMAMENTE →</strong>
+    </a>
+
+  </div>
+</section>
+
+    
+
+  </main>
+
+  <footer>
+    <strong>FELIPE BASKET</strong>
+    <p>El camino continúa. 🏀</p>
+  </footer>
+</body>
+</html>

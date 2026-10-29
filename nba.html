@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NBA - FELIPE BASKET</title>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+ 
+<header class="encabezado">
+  <h1>FELIPE BASKET</h1>
+  <p>Tu lugar para vivir la NBA</p>
+
+  <nav class="navegacion">
+    <a href="index.html">Inicio</a>
+    <a href="curry.html">Stephen Curry</a>
+    <a href="lebron.html">LeBron James</a>
+    <a href="nba.html">Resultados NBA</a>
+  </nav>
+</header>
+
+  <main class="nba-contenedor">
+    <h2>Últimos resultados de la NBA</h2>
+    <p>Los 15 partidos más recientes de la temporada 2026-27.</p>
+
+    <div id="nba-partidos">Cargando resultados...</div>
+  </main>
+
+  <script>
+    async function cargarResultadosNBA() {
+      const contenedor = document.getElementById("nba-partidos");
+
+      try {
+        const respuesta = await fetch("/api/nba-results");
+        const datos = await respuesta.json();
+
+        if (!respuesta.ok || !Array.isArray(datos.partidos)) {
+          throw new Error(datos.error || "No se pudieron cargar los partidos.");
+        }
+
+        if (datos.partidos.length === 0) {
+          contenedor.textContent = "Todavía no hay resultados disponibles.";
+          return;
+        }
+
+        contenedor.innerHTML = datos.partidos.map(partido => {
+          const fecha = partido.fecha
+            ? new Date(partido.fecha).toLocaleString("es-AR", {
+                dateStyle: "medium",
+                timeStyle: "short"
+              })
+            : "Fecha no disponible";
+
+          const estado = partido.estado === "FT"
+            ? "Final"
+            : partido.estado === "AOT"
+              ? "Final (tiempo extra)"
+              : partido.estado || "Finalizado";
+
+        
+return `
+  <a class="nba-partido-link" href="partido.html?id=${encodeURIComponent(partido.id)}">
+    <article class="nba-partido">
+      <div class="nba-equipo">
+        ${partido.logoLocal ? `<img src="${partido.logoLocal}" alt="Logo de ${partido.local || "Local"}">` : ""}
+        <span>${partido.local || "Local"}</span>
+      </div>
+
+      <div class="nba-marcador">
+        ${partido.puntosLocal ?? "-"} - ${partido.puntosVisitante ?? "-"}
+      </div>
+
+      <div class="nba-equipo">
+        <span>${partido.visitante || "Visitante"}</span>
+        ${partido.logoVisitante ? `<img src="${partido.logoVisitante}" alt="Logo de ${partido.visitante || "Visitante"}">` : ""}
+      </div>
+
+      <div class="nba-info">${fecha} · ${estado}</div>
+    </article>
+  </a>
+`;
+
+        }).join("");
+      } catch (error) {
+        contenedor.innerHTML =
+          '<p class="nba-error">No pudimos cargar los resultados. Revisá que el servidor esté funcionando.</p>';
+        console.error(error);
+      }
+    }
+
+    cargarResultadosNBA();
+  </script>
+</body>
+</html>

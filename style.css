@@ -1,0 +1,957 @@
+  body {
+    background-color: #0b0b0b;
+    color: rgb(237, 237, 239);
+    font-family: Arial, sans-serif;
+    text-align: left;
+    padding: 30px;
+  }
+
+  h1 {
+    color: #11085a;
+  }
+
+  h2 {
+    color: #080a4e;
+  }
+
+  p {
+    font-size: 18px;
+  }
+
+  
+
+
+.jugador h3 {
+  color: #f97316;
+  font-size: 24px;
+}
+
+.jugador p {
+  color: #d1d5db;
+text-align: center;
+}
+
+.jugador:hover {
+  transform: translateY(-5px);
+}
+
+
+.foto-jugador {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #f97316;
+
+box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+transition: transform 0.3s ease;
+
+}
+
+.estadisticas {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.estadistica {
+  background-color: #374151;
+  border-radius: 10px;
+  padding: 10px;
+  flex: 1;
+}
+
+.estadistica h4 {
+  color: #f97316;
+  margin: 0 0 8px;
+}
+
+.estadistica p {
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+.boton-perfil {
+  background-color: #f97316;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 8px;
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.boton-perfil:hover {
+  background-color: #ea580c;
+}
+.encabezado {
+  background-color: #111827;
+  padding: 25px 15px;
+  text-align: center;
+  border-bottom: 3px solid #f97316;
+  margin-bottom: 30px;
+}
+
+.encabezado h1 {
+  color: #f97316;
+  font-size: 32px;
+  margin: 0;
+  letter-spacing: 2px;
+}
+
+.encabezado p {
+  color: #d1d5db;
+  margin-bottom: 0;
+}
+@media (max-width: 480px) {
+  .jugador {
+    max-width: 100%;
+    margin: 20px 10px;
+    padding: 15px;
+  }
+
+  .encabezado h1 {
+    font-size: 26px;
+  }
+
+  .estadisticas {
+    gap: 6px;
+  }
+
+  .estadistica {
+    padding: 8px 5px;
+  }
+}
+.selector-jugador {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.selector-jugador label {
+  color: white;
+  font-weight: bold;
+}
+
+.selector-jugador select {
+  background-color: #1f2937;
+  color: white;
+  border: 2px solid #f97316;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  max-width: 100%;
+}
+
+/* Selector de jugadores */
+.selector-jugador {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.selector-jugador label {
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.selector-jugador select {
+  background-color: #1f2937;
+  color: white;
+  border: 2px solid #f97316;
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  max-width: 100%;
+  outline: none;
+  transition: 0.3s;
+}
+
+.selector-jugador select:hover,
+.selector-jugador select:focus {
+  border-color: #fb923c;
+  box-shadow: 0 0 10px #f9731644;
+}
+
+/* Navegación principal */
+.navegacion {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.navegacion a {
+  color: white;
+  background-color: #374151;
+  text-decoration: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.navegacion a:hover {
+  background-color: #f97316;
+  transform: translateY(-2px);
+}
+
+/* Página de resultados NBA */
+.nba-contenedor {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+.nba-contenedor h2 {
+  color: #f97316;
+  text-align: center;
+}
+
+.nba-contenedor > p {
+  color: #d1d5db;
+  text-align: center;
+}
+
+.nba-partido {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  margin: 15px 0;
+  background-color: #111827;
+  color: white;
+  border: 1px solid #374151;
+  border-left: 4px solid #f97316;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.nba-partido:hover {
+  transform: translateY(-3px);
+}
+
+.nba-equipo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.nba-equipo:last-child {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.nba-equipo img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+}
+
+.nba-marcador {
+  color: #f97316;
+  font-size: 25px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.nba-info {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: #d1d5db;
+  font-size: 13px;
+}
+
+.nba-error {
+  color: #ff7777;
+  text-align: center;
+}
+
+@media (max-width: 520px) {
+  .nba-contenedor {
+    padding: 10px;
+  }
+
+  .nba-partido {
+    gap: 7px;
+    padding: 12px 8px;
+  }
+
+  .nba-equipo {
+    flex-direction: column;
+    text-align: center;
+    font-size: 12px;
+    overflow-wrap: anywhere;
+  }
+
+  .nba-equipo:last-child {
+    text-align: center;
+  }
+
+  .nba-equipo img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .nba-marcador {
+    font-size: 20px;
+  }
+}
+
+/* Portada principal de FELIPE BASKET */
+.portada-secciones {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  max-width: 1050px;
+  margin: 40px auto;
+}
+
+.seccion-inicio {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 230px;
+  padding: 28px;
+  background: #151515;
+  border: 1px solid #333333;
+  border-left: 4px solid #f97316;
+  border-radius: 14px;
+  color: white;
+  text-decoration: none;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.seccion-inicio:hover {
+  transform: translateY(-5px);
+  border-color: #f97316;
+}
+
+.icono-seccion {
+  font-size: 38px;
+  margin-bottom: 10px;
+}
+
+.seccion-inicio h2 {
+  color: #f97316;
+  font-size: 23px;
+  margin: 8px 0;
+}
+
+.seccion-inicio p {
+  color: #d1d5db;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.enlace-seccion {
+  display: inline-block;
+  margin-top: auto;
+  padding-top: 16px;
+  color: #f97316;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+@media (min-width: 700px) {
+  .seccion-inicio:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 600px) {
+  .portada-secciones {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin: 24px auto;
+  }
+
+  .seccion-inicio {
+    min-height: 190px;
+    padding: 22px;
+  }
+
+  .seccion-inicio h2 {
+    font-size: 21px;
+  }
+}
+
+/* Identidad visual de BASQUET TOTAL */
+.portada-basquet {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.logo-basquet {
+  text-align: center;
+  padding: 35px 15px;
+  margin-bottom: 25px;
+  background: #111111;
+  border: 1px solid #333333;
+  border-bottom: 3px solid #f97316;
+  border-radius: 14px;
+}
+
+.logo-baloncesto {
+  font-size: 55px;
+}
+
+.logo-basquet h1 {
+  color: #ffffff;
+  font-size: clamp(30px, 5vw, 48px);
+  margin: 10px 0;
+  letter-spacing: 2px;
+}
+
+.logo-basquet h1 span {
+  color: #f97316;
+}
+
+.logo-basquet p {
+  color: #d1d5db;
+  font-size: 16px;
+  letter-spacing: 4px;
+}
+
+.menu-basquet {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.tarjeta-basquet {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 25px;
+  min-height: 220px;
+  background: #151515;
+  color: #ffffff;
+  text-decoration: none;
+  border: 1px solid #333333;
+  border-left: 4px solid #f97316;
+  border-radius: 12px;
+  transition: transform 0.25s, border-color 0.25s;
+}
+
+.tarjeta-basquet:hover {
+  transform: translateY(-5px);
+  border-color: #f97316;
+}
+
+.icono-basquet {
+  font-size: 35px;
+}
+
+.tarjeta-basquet h2 {
+  color: #f97316;
+  font-size: 21px;
+  margin: 12px 0 5px;
+}
+
+.tarjeta-basquet p {
+  color: #d1d5db;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.tarjeta-basquet strong {
+  color: #f97316;
+  font-size: 13px;
+  margin-top: auto;
+  padding-top: 15px;
+}
+
+@media (max-width: 600px) {
+  .menu-basquet {
+    grid-template-columns: 1fr;
+  }
+
+  .logo-basquet {
+    padding: 25px 10px;
+  }
+
+  .logo-basquet p {
+    letter-spacing: 2px;
+  }
+}
+
+/* Página de jugadores BASQUET TOTAL */
+.pagina-jugadores {
+  max-width: 1100px;
+  margin: 35px auto;
+}
+
+.titulo-jugadores {
+  margin-bottom: 30px;
+}
+
+.etiqueta-jugadores {
+  color: #f97316;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+.titulo-jugadores h2 {
+  color: #ffffff;
+  font-size: clamp(28px, 4vw, 40px);
+  margin: 10px 0;
+}
+
+.titulo-jugadores > p:last-child {
+  color: #d1d5db;
+}
+
+.grid-jugadores {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.card-jugador {
+  overflow: hidden;
+  background: #151515;
+  border: 1px solid #333333;
+  border-radius: 14px;
+  border-bottom: 3px solid #f97316;
+}
+
+.imagen-jugador {
+  height: 240px;
+  background-color: #222222;
+  background-position: center;
+  background-size: cover;
+}
+
+.imagen-jugador.curry {
+  background-image: url("https://cdn.nba.com/headshots/nba/latest/1040x760/201939.png");
+}
+
+.imagen-jugador.lebron {
+  background-image: url("https://cdn.nba.com/headshots/nba/latest/1040x760/2544.png");
+}
+
+.contenido-jugador {
+  padding: 22px;
+}
+
+.liga-jugador {
+  color: #f97316;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.contenido-jugador h3 {
+  color: #ffffff;
+  font-size: 27px;
+  margin: 12px 0;
+}
+
+.contenido-jugador p {
+  color: #d1d5db;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.boton-jugador {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 12px 18px;
+  background: #f97316;
+  color: #111111;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 7px;
+}
+
+.boton-jugador:hover {
+  background: #fb923c;
+}
+
+.proximamente-jugadores {
+  margin-top: 30px;
+  text-align: center;
+  color: #f97316;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+@media (max-width: 650px) {
+  .grid-jugadores {
+    grid-template-columns: 1fr;
+  }
+
+  .imagen-jugador {
+    height: 220px;
+  }
+}
+
+/* Logo oficial BASQUET TOTAL */
+.logo-oficial {
+  display: block;
+  width: 100%;
+  max-width: 340px;
+  height: auto;
+  margin: 0 auto 10px;
+  object-fit: contain;
+}
+
+.logo-basquet {
+  text-align: center;
+  padding: 25px 15px;
+  margin-bottom: 25px;
+  background: #111111;
+  border: 1px solid #333333;
+  border-bottom: 3px solid #f97316;
+  border-radius: 14px;
+}
+
+.logo-basquet p {
+  color: #d1d5db;
+  font-size: 16px;
+  letter-spacing: 4px;
+}
+
+@media (max-width: 600px) {
+  .logo-oficial {
+    max-width: 260px;
+  }
+
+  .logo-basquet p {
+    letter-spacing: 2px;
+    font-size: 13px;
+  }
+}
+
+/* ===== CLASIFICACION NBA: ESTILOS PROPIOS ===== */
+
+.pagina-clasificacion {
+  width: min(1200px, 94%);
+  margin: 40px auto;
+  color: #f5f5f5;
+  font-family: Arial, sans-serif;
+}
+
+.titulo-clasificacion {
+  text-align: center;
+  margin-bottom: 35px;
+  padding: 25px 15px;
+}
+
+.titulo-clasificacion .etiqueta-basquet {
+  color: #f97316;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+}
+
+.titulo-clasificacion h1 {
+  color: #ffffff;
+  font-size: clamp(28px, 5vw, 48px);
+  line-height: 1.2;
+  margin: 10px 0 15px;
+  position: static;
+  text-align: center;
+}
+
+.titulo-clasificacion h1 span {
+  color: #f97316;
+}
+
+.titulo-clasificacion > p:not(.etiqueta-basquet) {
+  color: #bdbdbd;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 12px 0;
+}
+
+#actualizar-tabla {
+  background: #f97316;
+  color: #ffffff;
+  border: none;
+  border-radius: 7px;
+  padding: 12px 20px;
+  margin: 15px 0;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#actualizar-tabla:hover {
+  background: #ea580c;
+}
+
+#actualizar-tabla:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+#estado-tabla {
+  color: #bdbdbd;
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+.tablas-conferencias {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  align-items: start;
+}
+
+.conferencia-basquet {
+  min-width: 0;
+  background: #111111;
+  border: 1px solid #292929;
+  border-radius: 12px;
+  padding: 18px;
+  overflow: hidden;
+}
+
+.conferencia-basquet h2 {
+  color: #f97316;
+  font-size: 23px;
+  line-height: 1.3;
+  margin: 0 0 18px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #f97316;
+  position: static;
+}
+
+.tabla-scroll {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.tabla-nba {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: auto;
+  color: #eeeeee;
+  font-size: 13px;
+}
+
+.tabla-nba th {
+  background: #202020;
+  color: #f97316;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 12px 8px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.tabla-nba td {
+  padding: 11px 8px;
+  border-bottom: 1px solid #292929;
+  text-align: center;
+  white-space: nowrap;
+  height: auto;
+  line-height: 1.4;
+}
+
+.tabla-nba tbody tr:hover {
+  background: #1c1c1c;
+}
+
+.tabla-nba .victorias {
+  color: #4ade80;
+  font-weight: bold;
+}
+
+.tabla-nba .equipo-clasificacion {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 145px;
+  text-align: left;
+}
+
+.tabla-nba .equipo-clasificacion img {
+  display: block;
+  width: 28px !important;
+  height: 28px !important;
+  max-width: 28px !important;
+  max-height: 28px !important;
+  object-fit: contain;
+  flex: 0 0 28px;
+}
+
+.tabla-nba .equipo-clasificacion span {
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.3;
+  white-space: normal;
+}
+
+.tabla-nba .equipo-clasificacion small {
+  color: #999999;
+  font-size: 10px;
+}
+
+.pie-basquet {
+  text-align: center;
+  padding: 25px 12px;
+  color: #999999;
+}
+
+@media (max-width: 850px) {
+  .tablas-conferencias {
+    grid-template-columns: 1fr;
+  }
+
+  .conferencia-basquet {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pagina-clasificacion {
+    width: 96%;
+    margin: 20px auto;
+  }
+
+  .titulo-clasificacion {
+    padding: 15px 5px;
+  }
+
+  .tabla-nba {
+    font-size: 12px;
+  }
+
+  .tabla-nba th,
+  .tabla-nba td {
+    padding: 9px 5px;
+  }
+}
+
+/* Corrección del encabezado en clasificación NBA */
+body:has(.pagina-clasificacion) .encabezado {
+  position: relative;
+  height: auto;
+  min-height: 0;
+  padding: 28px 20px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  box-sizing: border-box;
+}
+
+body:has(.pagina-clasificacion) .logo-basquet {
+  position: static;
+  display: inline-block;
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.4;
+  color: #f97316;
+}
+
+body:has(.pagina-clasificacion) .encabezado > p {
+  position: static;
+  margin: 0;
+  padding: 0;
+  color: #ffffff;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+body:has(.pagina-clasificacion) .navegacion {
+  position: static;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+body:has(.pagina-clasificacion) .navegacion a {
+  position: static;
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  body:has(.pagina-clasificacion) .navegacion {
+    gap: 8px;
+  }
+
+  body:has(.pagina-clasificacion) .navegacion a {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+}
+.nba-partido-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.nba-partido-link:hover .nba-partido {
+  transform: translateY(-2px);
+  cursor: pointer;
+}
+
+/* Ajuste de logos en el detalle del partido NBA */
+.marcador-principal .equipo-ficha img.logo-ficha {
+  display: block;
+  width: 64px !important;
+  height: 64px !important;
+  min-width: 64px;
+  max-width: 64px !important;
+  min-height: 64px;
+  max-height: 64px !important;
+  object-fit: contain;
+  flex: 0 0 64px;
+  margin: 0 auto;
+}
+
+.marcador-principal .equipo-ficha {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 10px;
+}
+
+.marcador-principal .equipo-ficha img {
+  border-radius: 0;
+}
+
+@media (max-width: 500px) {
+  .marcador-principal .equipo-ficha img.logo-ficha {
+    width: 48px !important;
+    height: 48px !important;
+    min-width: 48px;
+    max-width: 48px !important;
+    min-height: 48px;
+    max-height: 48px !important;
+    flex-basis: 48px;
+  }
+
+  .marcador-principal {
+    gap: 8px;
+    padding: 20px 8px;
+  }
+}

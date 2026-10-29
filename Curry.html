@@ -1,0 +1,345 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stephen Curry | Felipe Basket</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0b0b0b;
+      color: #f5f5f5;
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 25px 20px;
+      text-align: center;
+      border-bottom: 2px solid #f97316;
+      background: #111;
+    }
+
+    header h1 {
+      margin: 0;
+      color: #f97316;
+      letter-spacing: 3px;
+    }
+
+    header p {
+      margin-bottom: 0;
+      color: #bbb;
+    }
+
+    .volver {
+      display: inline-block;
+      margin-top: 15px;
+      color: #f97316;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    main {
+      width: min(1000px, 92%);
+      margin: 35px auto;
+    }
+
+    .perfil {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 30px;
+      align-items: center;
+      padding: 25px;
+      background: #151515;
+      border: 1px solid #303030;
+      border-radius: 18px;
+    }
+
+    .foto {
+      display: block;
+      width: 100%;
+      max-height: 450px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 12px;
+      border: 2px solid #f97316;
+    }
+
+    .etiqueta {
+      color: #f97316;
+      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    .nombre {
+      font-size: clamp(30px, 5vw, 46px);
+      line-height: 1.1;
+      margin: 10px 0;
+    }
+
+    .datos {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .dato {
+      padding: 14px;
+      background: #222;
+      border-radius: 10px;
+      border-bottom: 2px solid #f97316;
+    }
+
+    .dato span {
+      display: block;
+      color: #aaa;
+      font-size: 13px;
+    }
+
+    .dato strong {
+      font-size: 18px;
+      color: #f97316;
+    }
+
+    section.contenido {
+      margin-top: 30px;
+      padding: 25px;
+      background: #151515;
+      border: 1px solid #303030;
+      border-radius: 16px;
+    }
+
+    h2 {
+      color: #f97316;
+      margin-top: 0;
+    }
+
+    .contenido li {
+      margin-bottom: 10px;
+    }
+
+    .videos {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .video-card {
+      min-width: 0;
+      padding: 14px;
+      background: #202020;
+      border-radius: 12px;
+    }
+
+    .video-card h3 {
+      margin-top: 0;
+    }
+
+    .video {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: 0;
+      border-radius: 8px;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 25px;
+      text-align: center;
+      color: #999;
+      border-top: 1px solid #333;
+    }
+
+    footer strong {
+      color: #f97316;
+    }
+
+    @media (max-width: 700px) {
+      .perfil {
+        grid-template-columns: 1fr;
+      }
+
+      .videos {
+        grid-template-columns: 1fr;
+      }
+
+      section.contenido {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>FELIPE BASKET</h1>
+    <p>Mi camino en el básquet 🏀</p>
+    <a class="volver" href="index.html">← Volver a la página principal</a>
+  </header>
+
+  <main>
+    <div class="perfil">
+      <img
+        class="foto"
+        src="imagenes/foto.avif"
+        alt="Stephen Curry"
+      >
+
+      <div>
+        <div class="etiqueta">Jugador NBA</div>
+        <h1 class="nombre">Stephen Curry</h1>
+        <p>Golden State Warriors · Base · #30</p>
+        <p>Uno de los grandes referentes del lanzamiento de tres puntos.</p>
+
+<section class="contenido contenido-estadisticas">
+  <h2>📊 Temporada NBA 2026-27</h2>
+  <p id="estado-estadisticas">Cargando estadísticas...</p>
+
+  <div class="datos">
+    <div class="dato">
+      <span>Puntos por partido</span>
+      <strong id="puntos">--</strong>
+    </div>
+    <div class="dato">
+      <span>Rebotes por partido</span>
+      <strong id="rebotes">--</strong>
+    </div>
+    <div class="dato">
+      <span>Asistencias por partido</span>
+      <strong id="asistencias">--</strong>
+    </div>
+    <div class="dato">
+      <span>Partidos jugados</span>
+      <strong id="partidos">--</strong>
+    </div>
+  </div>
+</section>
+
+</div>
+        <div class="datos">
+          <div class="dato">
+            <span>Altura</span>
+            <strong>1,88 m</strong>
+          </div>
+
+          <div class="dato">
+            <span>Dorsal</span>
+            <strong>#30</strong>
+          </div>
+
+          <div class="dato">
+            <span>Posición</span>
+            <strong>Base</strong>
+          </div>
+
+          <div class="dato">
+            <span>Debut NBA</span>
+            <strong>2009</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="contenido">
+      <h2>📖 Biografía</h2>
+      <p>
+        Stephen Curry nació el 14 de marzo de 1988 en Akron,
+        Ohio, Estados Unidos. Se destacó por su lanzamiento
+        de larga distancia, su manejo del balón y su capacidad
+        para crear oportunidades para sus compañeros.
+      </p>
+      <p>
+        Desarrolló gran parte de su carrera en Golden State
+        Warriors y fue una figura fundamental en los títulos
+        de la franquicia.
+      </p>
+    </section>
+
+    <section class="contenido">
+      <h2>🏆 Logros destacados</h2>
+      <ul>
+        <li>4 veces campeón de la NBA.</li>
+        <li>2 veces MVP de la temporada regular.</li>
+        <li>MVP de las Finales de 2022.</li>
+        <li>Referente histórico en triples convertidos.</li>
+      </ul>
+    </section>
+
+    <section class="contenido">
+      <h2>🎬 Highlights de Stephen Curry</h2>
+      <p>Sus triples, jugadas y mejores momentos dentro de la cancha.</p>
+
+      <div class="videos">
+        <div class="video-card">
+          <h3>Highlights · Video 1</h3>
+          <iframe
+            class="video"
+            src="https://www.youtube.com/embed/hUOfC2ilXak"
+            title="Highlights de Stephen Curry"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            loading="lazy">
+          </iframe>
+        </div>
+
+    </section>
+  </main>
+
+  <footer>
+    <strong>FELIPE BASKET</strong>
+    <p>El camino continúa. 🏀</p>
+  </footer>
+
+<script>
+async function cargarEstadisticas() {
+  const estado = document.getElementById("estado-estadisticas");
+
+  try {
+    const respuesta = await fetch("/api/curry-stats");
+
+    if (!respuesta.ok) {
+      throw new Error("No se pudieron cargar las estadísticas");
+    }
+
+    const datos = await respuesta.json();
+
+    document.getElementById("puntos").textContent =
+      Number(datos.puntos).toFixed(1);
+
+    document.getElementById("rebotes").textContent =
+      Number(datos.rebotes).toFixed(1);
+
+    document.getElementById("asistencias").textContent =
+      Number(datos.asistencias).toFixed(1);
+
+    document.getElementById("partidos").textContent =
+      datos.partidos;
+
+    estado.textContent =
+      `${datos.nombre} · ${datos.equipo} · Temporada ${datos.temporada}`;
+
+  } catch (error) {
+    estado.textContent =
+      "No se pudieron cargar las estadísticas. Revisá que el servidor esté funcionando.";
+    console.error(error);
+  }
+}
+
+cargarEstadisticas();
+</script>
+</body>
+
+</body>
+</html>
+

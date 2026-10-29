@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noticias | BASQUET TOTAL</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .pagina-noticias {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 30px 20px;
+      color: #fff;
+    }
+
+    .pagina-noticias h1 {
+      color: #f97316;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .subtitulo-noticias {
+      color: #bbb;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .lista-noticias {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .tarjeta-noticia {
+      background: #151515;
+      border: 1px solid #333;
+      border-left: 4px solid #f97316;
+      border-radius: 10px;
+      padding: 22px;
+    }
+
+    .tarjeta-noticia h2 {
+  font-size: 19px;
+  line-height: 1.4;
+  margin-top: 0;
+  color: #ffffff;
+}
+
+    .tarjeta-noticia p {
+  color: #d1d5db;
+  line-height: 1.6;
+}
+
+    .tarjeta-noticia a {
+      display: inline-block;
+      margin-top: 12px;
+      color: #f97316;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .tarjeta-noticia a:hover {
+      text-decoration: underline;
+    }
+
+    .estado-noticias {
+      text-align: center;
+      color: #bbb;
+      padding: 25px;
+    }
+
+    .actualizar-noticias {
+      display: block;
+      margin: 0 auto 25px;
+      padding: 12px 20px;
+      background: #f97316;
+      color: #111;
+      border: 0;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  
+.imagen-noticia {
+  display: block;
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  background: #222;
+}
+
+  </style>
+</head>
+<body>
+  <header class="encabezado">
+    <div class="logo-basquet">🏀 BASQUET TOTAL</div>
+    <p>TODO SOBRE BASQUET</p>
+    <nav class="navegacion">
+      <a href="index.html">Inicio</a>
+      <a href="nba.html">Resultados NBA</a>
+      <a href="clasificacion.html">Clasificación NBA</a>
+      <a href="jugadores.html">Jugadores</a>
+    </nav>
+  </header>
+
+  <main class="pagina-noticias">
+    <h1>📰 Últimas noticias</h1>
+    <p class="subtitulo-noticias">
+      Las novedades del mundo NBA, actualizadas automáticamente.
+    </p>
+
+    <button class="actualizar-noticias" id="boton-actualizar">
+      Actualizar noticias
+    </button>
+
+    <section id="lista-noticias" class="lista-noticias">
+      <p class="estado-noticias">Cargando noticias...</p>
+    </section>
+  </main>
+
+  <script>
+    const lista = document.getElementById("lista-noticias");
+    const boton = document.getElementById("boton-actualizar");
+
+    async function cargarNoticias() {
+      lista.innerHTML = '<p class="estado-noticias">Cargando noticias...</p>';
+      boton.disabled = true;
+
+      try {
+        const respuesta = await fetch("/api/noticias");
+
+        if (!respuesta.ok) {
+          throw new Error("No se pudieron cargar las noticias.");
+        }
+
+        const noticias = await respuesta.json();
+
+        if (!noticias.length) {
+          lista.innerHTML =
+            '<p class="estado-noticias">No hay noticias disponibles.</p>';
+          return;
+        }
+
+        lista.replaceChildren();
+
+        noticias.forEach((noticia) => {
+          const tarjeta = document.createElement("article");
+          tarjeta.className = "tarjeta-noticia";
+
+if (noticia.imagen) {
+  const imagen = document.createElement("img");
+  imagen.src = noticia.imagen;
+  imagen.alt = noticia.titulo || "Imagen de la noticia";
+  imagen.className = "imagen-noticia";
+  imagen.loading = "lazy";
+  tarjeta.appendChild(imagen);
+}
+
+          const titulo = document.createElement("h2");
+          titulo.textContent = noticia.titulo || "Noticia de básquet";
+
+          const fecha = document.createElement("p");
+          fecha.textContent = noticia.fecha
+            ? new Date(noticia.fecha).toLocaleDateString("es-AR")
+            : "Fecha no disponible";
+
+          const descripcion = document.createElement("p");
+          descripcion.textContent = noticia.descripcion || "";
+
+          tarjeta.append(titulo, fecha, descripcion);
+
+          if (noticia.enlace) {
+            const enlace = document.createElement("a");
+            enlace.textContent = "Leer noticia completa ↗";
+            enlace.href = noticia.enlace;
+            enlace.target = "_blank";
+            enlace.rel = "noopener noreferrer";
+            tarjeta.appendChild(enlace);
+          }
+
+          lista.appendChild(tarjeta);
+        });
+      } catch (error) {
+        lista.innerHTML =
+          '<p class="estado-noticias">No pudimos cargar las noticias. Revisá que el servidor esté encendido e intentá de nuevo.</p>';
+      } finally {
+        boton.disabled = false;
+      }
+    }
+
+    boton.addEventListener("click", cargarNoticias);
+    cargarNoticias();
+
+    // Revisa si hay novedades cada 10 minutos.
+    setInterval(cargarNoticias, 10 * 60 * 1000);
+  </script>
+</body>
+</html>
